@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 14:32:01 by engiacom          #+#    #+#             */
-/*   Updated: 2025/04/30 14:32:14 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/04/30 14:40:04 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,20 @@ int	check_quote(t_arg *arg)
 		arg = arg->next;
 	}
 	return (q + dq);
+}
+
+int	check_pipe(t_arg *arg)
+{
+	int	p;
+
+	p = 0;
+	while (arg)
+	{
+		if (arg->type == T_PIPE)
+			p = 1;
+		if (arg->type == T_WORD && p == 1)
+			p = 0;
+		arg = arg->next;
+	}
+	return (p);
 }
